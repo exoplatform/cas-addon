@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2003-2014 eXo Platform SAS.
+
+    This file is part of Sample Spring MVC Portlet Parent.
+
+    Sample Spring MVC Portlet Parent is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as
+    published by the Free Software Foundation; either version 3 of
+    the License, or (at your option) any later version.
+
+    Sample Spring MVC Portlet Parent software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with Sample Spring MVC Portlet Parent; if not, write to the Free
+    Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+    02110-1301 USA, or see <http://www.gnu.org/licenses/>.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.exoplatform.addons</groupId>
+    <artifactId>addons-parent-pom</artifactId>
+    <version>4</version>
+  </parent>
+  <groupId>org.exoplatform.addons.sso</groupId>
+  <artifactId>cas-addon-parent</artifactId>
+  <version>4.2.x-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>CAS Addon Parent POM</name>
+  <description>The CAS SSO add-on parent POM</description>
+
+  <scm>
+    <connection>scm:git:git://github.com/exo-addons/cas-addon.git</connection>
+    <developerConnection>scm:git:git@github.com:exo-addons/cas-addon.git</developerConnection>
+    <url>https://github.com/exo-addons/cas-addon</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <modules>
+    <module>packaging</module>
+  </modules>
+
+  <properties>
+    <!-- **************************************** -->
+    <!-- Dependencies versions -->
+    <!-- **************************************** -->
+    <org.exoplatform.depmgt.version>10-SNAPSHOT</org.exoplatform.depmgt.version>
+    <exogtn.version>4.2.x-PLF-SNAPSHOT</exogtn.version>
+    <version.cas.client>3.2.1</version.cas.client>
+    <org.gatein.sso.version>1.3.1.Final</org.gatein.sso.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.gatein.sso</groupId>
+        <artifactId>sso-auth-callback</artifactId>
+        <version>${org.gatein.sso.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.sso</groupId>
+        <artifactId>sso-agent</artifactId>
+        <version>${org.gatein.sso.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.sso</groupId>
+        <artifactId>sso-integration</artifactId>
+        <version>${org.gatein.sso.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.sso</groupId>
+        <artifactId>sso-common-plugin</artifactId>
+        <version>${org.gatein.sso.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.sso</groupId>
+        <artifactId>sso-cas-plugin</artifactId>
+        <version>${org.gatein.sso.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jasig.cas.client</groupId>
+        <artifactId>cas-client-core</artifactId>
+        <version>${version.cas.client}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.component.web.sso.integration-configs</artifactId>
+        <version>${exogtn.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.component.web.sso.agents-configs</artifactId>
+        <version>${exogtn.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

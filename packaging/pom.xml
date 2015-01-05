@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2003-2014 eXo Platform SAS.
+
+    This file is part of Sample Spring MVC Portlet Packaging.
+
+    Sample Spring MVC Portlet Packaging is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as
+    published by the Free Software Foundation; either version 3 of
+    the License, or (at your option) any later version.
+
+    Sample Spring MVC Portlet Packaging software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with Sample Spring MVC Portlet Packaging; if not, write to the Free
+    Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+    02110-1301 USA, or see <http://www.gnu.org/licenses/>.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.exoplatform.addons.sso</groupId>
+    <artifactId>cas-addon-parent</artifactId>
+    <version>4.2.x-SNAPSHOT</version>
+  </parent>
+  <artifactId>cas-addon-packaging</artifactId>
+  <packaging>pom</packaging>
+  <name>CAS add-on Packaging</name>
+  <description>The CAS add-on packaging</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.gatein.sso</groupId>
+      <artifactId>sso-auth-callback</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gatein.sso</groupId>
+      <artifactId>sso-integration</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gatein.sso</groupId>
+      <artifactId>sso-agent</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gatein.sso</groupId>
+      <artifactId>sso-common-plugin</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gatein.sso</groupId>
+      <artifactId>sso-cas-plugin</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jasig.cas.client</groupId>
+      <artifactId>cas-client-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gatein.portal</groupId>
+      <artifactId>exo.portal.component.web.sso.integration-configs</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gatein.portal</groupId>
+      <artifactId>exo.portal.component.web.sso.agents-configs</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}-${project.version}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>package-extension</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <finalName>${project.artifactId}-${project.version}</finalName>
+              <appendAssemblyId>false</appendAssemblyId>
+              <descriptors>
+                <descriptor>src/main/assemblies/exo-cas-addon.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
