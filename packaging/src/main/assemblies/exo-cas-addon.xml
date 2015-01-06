@@ -48,6 +48,8 @@
       <includes>
         <include>org.gatein.sso:sso-common-plugin</include>
         <include>org.gatein.sso:sso-cas-plugin</include>
+        <include>org.exoplatform.addons.sso:cas40-plugin</include>
+        <include>commons-httpclient:commons-httpclient</include>
       </includes>
     </dependencySet>
   </dependencySets>
