@@ -1,0 +1,4 @@
+You will need copy all jar files in this folder into $CAS_TOMCAT_HOME/webapps/cas/WEB-INF/lib
+if you want setup CAS to make secure authentication callbacks to a RESTful service installed on the remote eXo Platform.
+
+Please read more at: https://github.com/exo-addons/cas-addon/blob/master/README.md#authentication-with-callback
