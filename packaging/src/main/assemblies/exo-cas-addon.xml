@@ -44,23 +44,10 @@
       <includes>
         <include>org.jasig.cas.client:cas-client-core:jar</include>
         <include>org.gatein.sso:sso-auth-callback:jar</include>
-        <!--<include>org.gatein.sso:sso-integration</include>-->
         <include>org.gatein.sso:sso-agent</include>
         <include>org.gatein.portal:exo.portal.component.web.sso.integration-configs</include>
         <include>org.gatein.portal:exo.portal.component.web.sso.agents-configs</include>
       </includes>
     </dependencySet>
-
-    <!--<dependencySet>
-      <outputDirectory>/cas-plugin</outputDirectory>
-      <useProjectArtifact>false</useProjectArtifact>
-      <useTransitiveDependencies>false</useTransitiveDependencies>
-      <includes>
-        <include>org.gatein.sso:sso-common-plugin</include>
-        <include>org.gatein.sso:sso-cas-plugin</include>
-        <include>org.exoplatform.addons.sso:cas40-plugin</include>
-        <include>commons-httpclient:commons-httpclient</include>
-      </includes>
-    </dependencySet>-->
   </dependencySets>
 </assembly>
