@@ -84,46 +84,53 @@ mvn clean install -Dmaven.test.skip=true
 ##### Authentication with callback
 
 In this case, when user authentication, cas server will call an REST api to authenticate username/password
+- You will need unzip `cas-plugin.zip` in `$PLATFORM_HOME`, we assume that you extract this file into folder `cas-plugin` 
+- If you are using CAS 3.5:
+    - Copy `commons-httpclient-3.1.jar`, `sso-common-plugin-1.3.1.Final.jar` and `sso-cas-plugin-1.3.1.Final.jar` from `$PLATFORM_HOME/cas-plugin` into `$CAS_TOMCAT_HOME/webapps/cas/WEB-INF/lib`
+    - Open `$CAS_TOMCAT_HOME/webapps/cas/WEB-INF/deployerConfigContext.xml`, then replace:
+    
+      ```xml
+      <bean
+          class="org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler" />
+      ```
+      With the following:
+      
+      ```xml
+      <bean class="org.gatein.sso.cas.plugin.AuthenticationPlugin">
+          <property name="gateInProtocol"><value>http</value></property>
+          <property name="gateInHost"><value>localhost</value></property>
+          <property name="gateInPort"><value>8080</value></property>
+          <property name="gateInContext"><value>portal</value></property>
+          <property name="httpMethod"><value>POST</value></property>
+      </bean>
+      ```
 
-- Copy all `*.jar` files from `$PLATFORM_HOME/cas-plugin/*.jar` into `$CAS_TOMCAT_HOME/webapps/cas/WEB-INF/lib`
-
-- If you are using CAS 3.5, Open `$CAS_TOMCAT_HOME/webapps/cas/WEB-INF/deployerConfigContext.xml`, then replace:
-```xml
-<bean
-    class="org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler" />
-```
-With the following:
-```xml
-<bean class="org.gatein.sso.cas.plugin.AuthenticationPlugin">
-    <property name="gateInProtocol"><value>http</value></property>
-    <property name="gateInHost"><value>localhost</value></property>
-    <property name="gateInPort"><value>8080</value></property>
-    <property name="gateInContext"><value>portal</value></property>
-    <property name="httpMethod"><value>POST</value></property>
-</bean>
-```
-
-- If you are using CAS 4.x, Open `$CAS_TOMCAT_HOME/webapps/cas/WEB-INF/deployerConfigContext.xml`, then replace:
-```xml
-<bean id="primaryAuthenticationHandler"
-          class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">
-    <property name="users">
-        <map>
-            <entry key="casuser" value="Mellon"/>
-        </map>
-    </property>
-</bean>
-```
-With:
-```xml
-<bean id="primaryAuthenticationHandler" class="org.gatein.sso.cas.plugin.CAS40AuthenticationPlugin">
-    <property name="gateInProtocol"><value>http</value></property>
-    <property name="gateInHost"><value>localhost</value></property>
-    <property name="gateInPort"><value>8080</value></property>
-    <property name="gateInContext"><value>portal</value></property>
-    <property name="httpMethod"><value>POST</value></property>
-</bean>
-```
+- If you are using CAS version 4.0
+    - Copy `commons-httpclient-3.1.jar`, `sso-common-plugin-1.3.1.Final.jar` and `cas40-plugin-4.2.x-SNAPSHOT.jar` from `$PLATFORM_HOME/cas-plugin` into `$CAS_TOMCAT_HOME/webapps/cas/WEB-INF/lib`
+    - Open `$CAS_TOMCAT_HOME/webapps/cas/WEB-INF/deployerConfigContext.xml`, then replace:
+    
+    ```xml
+    <bean id="primaryAuthenticationHandler"
+              class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">
+        <property name="users">
+            <map>
+                <entry key="casuser" value="Mellon"/>
+            </map>
+        </property>
+    </bean>
+    ```
+    
+    With:
+    
+    ```xml
+    <bean id="primaryAuthenticationHandler" class="org.gatein.sso.cas.plugin.CAS40AuthenticationPlugin">
+        <property name="gateInProtocol"><value>http</value></property>
+        <property name="gateInHost"><value>localhost</value></property>
+        <property name="gateInPort"><value>8080</value></property>
+        <property name="gateInContext"><value>portal</value></property>
+        <property name="httpMethod"><value>POST</value></property>
+    </bean>
+    ```
 
 ##### Other authentication plugin
 please follow do guideline at: https://wiki.jasig.org/display/CASUM/Authentication
