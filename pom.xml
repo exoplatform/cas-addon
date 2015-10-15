@@ -52,7 +52,7 @@
     <!-- Dependencies versions -->
     <!-- **************************************** -->
     <org.exoplatform.depmgt.version>11-SNAPSHOT</org.exoplatform.depmgt.version>
-    <org.gatein.sso.version>1.4.0.Final</org.gatein.sso.version>
+    <org.gatein.sso.version>1.4.5.Final</org.gatein.sso.version>
     <exogtn.version>4.3.x-PLF-SNAPSHOT</exogtn.version>
     <cas.client.version>3.2.1</cas.client.version>
     <commons-httpclient.version>3.1</commons-httpclient.version>
