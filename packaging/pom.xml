@@ -30,7 +30,7 @@
   </parent>
   <artifactId>cas-addon-packaging</artifactId>
   <packaging>pom</packaging>
-  <name>CAS add-on Packaging</name>
+  <name>eXo Add-on:: CAS add-on Packaging</name>
   <description>The CAS add-on packaging</description>
 
   <dependencies>

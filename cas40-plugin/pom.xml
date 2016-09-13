@@ -30,7 +30,7 @@
   </parent>
   <artifactId>cas40-plugin</artifactId>
   <packaging>jar</packaging>
-  <name>CAS 4.0 Plugin</name>
+  <name>eXo Add-on:: CAS 4.0 Plugin</name>
   <description>The CAS 4.0 plugin</description>
 
   <properties>

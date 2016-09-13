@@ -32,7 +32,7 @@
   <artifactId>cas-addon-parent</artifactId>
   <version>1.1.x-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>CAS Addon Parent POM</name>
+  <name>eXo Add-on:: CAS Addon Parent POM</name>
   <description>The CAS SSO add-on parent POM</description>
 
   <scm>
