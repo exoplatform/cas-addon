@@ -32,8 +32,8 @@
   <artifactId>cas-addon-parent</artifactId>
   <version>1.1.x-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>eXo Add-on:: CAS Addon Parent POM</name>
-  <description>The CAS SSO add-on parent POM</description>
+  <name>eXo Add-on:: CAS SSO</name>
+  <description>The CAS SSO add-on</description>
 
   <scm>
     <connection>scm:git:git://github.com/exoplatform/cas-addon.git</connection>
