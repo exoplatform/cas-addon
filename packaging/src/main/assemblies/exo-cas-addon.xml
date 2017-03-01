@@ -43,7 +43,7 @@
       <outputDirectory>/lib</outputDirectory>
       <includes>
         <include>org.jasig.cas.client:cas-client-core:jar</include>
-        <include>org.gatein.sso:sso-auth-callback:jar</include>
+        <include>org.exoplatform.gatein.sso:sso-auth-callback:jar</include>
         <include>org.gatein.portal:exo.portal.component.web.sso.integration-configs</include>
         <include>org.gatein.portal:exo.portal.component.web.sso.agents-configs</include>
       </includes>

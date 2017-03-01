@@ -39,7 +39,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.gatein.sso</groupId>
+      <groupId>org.exoplatform.gatein.sso</groupId>
       <artifactId>sso-common-plugin</artifactId>
     </dependency>
     <dependency>
