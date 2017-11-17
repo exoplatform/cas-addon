@@ -28,14 +28,10 @@
     <artifactId>cas-addon-parent</artifactId>
     <version>1.3.x-SNAPSHOT</version>
   </parent>
-  <artifactId>cas40-plugin</artifactId>
+  <artifactId>cas-plugin</artifactId>
   <packaging>jar</packaging>
-  <name>eXo Add-on:: CAS 4.0 Plugin</name>
-  <description>The CAS 4.0 plugin</description>
-
-  <properties>
-    <cas.version>4.0.0</cas.version>
-  </properties>
+  <name>eXo Add-on:: CAS Plugin</name>
+  <description>The CAS plugin</description>
 
   <dependencies>
     <dependency>
@@ -43,9 +39,8 @@
       <artifactId>sso-common-plugin</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.jasig.cas</groupId>
+      <groupId>org.apereo.cas</groupId>
       <artifactId>cas-server-core</artifactId>
-      <version>${cas.version}</version>
     </dependency>
   </dependencies>
 </project>

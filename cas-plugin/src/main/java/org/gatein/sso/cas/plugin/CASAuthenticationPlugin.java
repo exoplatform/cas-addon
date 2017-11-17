@@ -21,17 +21,22 @@
 */
 package org.gatein.sso.cas.plugin;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.gatein.sso.plugin.RestCallbackCaller;
-import org.jasig.cas.authentication.HandlerResult;
-import org.jasig.cas.authentication.PreventedException;
-import org.jasig.cas.authentication.UsernamePasswordCredential;
-import org.jasig.cas.authentication.handler.support.AbstractUsernamePasswordAuthenticationHandler;
-import org.jasig.cas.authentication.principal.SimplePrincipal;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.security.auth.login.FailedLoginException;
-import java.security.GeneralSecurityException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apereo.cas.authentication.HandlerResult;
+import org.apereo.cas.authentication.MessageDescriptor;
+import org.apereo.cas.authentication.PreventedException;
+import org.apereo.cas.authentication.UsernamePasswordCredential;
+import org.apereo.cas.authentication.handler.support.AbstractUsernamePasswordAuthenticationHandler;
+import org.apereo.cas.authentication.principal.PrincipalFactory;
+import org.apereo.cas.services.ServicesManager;
+import org.gatein.sso.plugin.RestCallbackCaller;
 
 /**
  * This is a Gatein Authentication Plugin for the CAS server. It is deployed along with the CAS server and provides authentication
@@ -39,8 +44,8 @@ import java.security.GeneralSecurityException;
  *
  * @author <a href="mailto:sshah@redhat.com">Sohil Shah</a>
  */
-public class CAS40AuthenticationPlugin extends AbstractUsernamePasswordAuthenticationHandler {
-    private static final Log log = LogFactory.getLog(CAS40AuthenticationPlugin.class);
+public class CASAuthenticationPlugin extends AbstractUsernamePasswordAuthenticationHandler {
+    private static final Log log = LogFactory.getLog(CASAuthenticationPlugin.class);
 
     private String gateInProtocol;
     private String gateInHost;
@@ -49,8 +54,9 @@ public class CAS40AuthenticationPlugin extends AbstractUsernamePasswordAuthentic
     private String httpMethod;
     private volatile RestCallbackCaller restCallbackCaller;
 
-    public CAS40AuthenticationPlugin() {
-
+    public CASAuthenticationPlugin(final String name, final ServicesManager servicesManager, final PrincipalFactory principalFactory,
+                                   final Integer order) {
+      super(name, servicesManager, principalFactory, order);
     }
 
     public String getGateInHost() {
@@ -96,24 +102,25 @@ public class CAS40AuthenticationPlugin extends AbstractUsernamePasswordAuthentic
         this.httpMethod = httpMethod;
     }
 
-
     @Override
-    protected HandlerResult authenticateUsernamePasswordInternal(final UsernamePasswordCredential credentials) throws GeneralSecurityException, PreventedException {
-        boolean valid;
-        try {
-            final String username = credentials.getUsername();
-            final String password = credentials.getPassword();
-
-            valid = getRestCallbackCaller().executeRemoteCall(username, password);
-        } catch (Exception e) {
-            log.error("Remote Authentication Failed");
-            log.error(this, e);
-            valid = false;
+    protected HandlerResult authenticateUsernamePasswordInternal(UsernamePasswordCredential credentials,
+                                                               String originalPassword) throws GeneralSecurityException,
+                                                                                        PreventedException {
+      try {
+        final String username = credentials.getUsername();
+        final String password = credentials.getPassword();
+  
+        boolean executeRemoteCall = getRestCallbackCaller().executeRemoteCall(username, password);
+        if (!executeRemoteCall) {
+          throw new FailedLoginException();
         }
-        if (!valid) {
-            throw new FailedLoginException();
-        }
-        return createHandlerResult(credentials, new SimplePrincipal(credentials.getUsername()), null);
+        final List<MessageDescriptor> list = new ArrayList<>();
+        return createHandlerResult(credentials, this.principalFactory.createPrincipal(username), list);
+      } catch (Exception e) {
+        log.error("Remote Authentication Failed");
+        log.error(this, e);
+        throw new FailedLoginException();
+      }
     }
 
     // Needs to be lazily initialized after all properties are injected by Spring
