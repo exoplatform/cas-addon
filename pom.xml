@@ -53,7 +53,7 @@
     <!-- **************************************** -->
     <org.exoplatform.depmgt.version>12-SNAPSHOT</org.exoplatform.depmgt.version>
     <org.gatein.sso.version>1.4.5.Final</org.gatein.sso.version>
-    <org.gatein.portal.version>4.4.x-PLF-SNAPSHOT</org.gatein.portal.version>
+    <org.gatein.portal.version>4.4.4-PLF</org.gatein.portal.version>
     <cas.client.version>3.2.1</cas.client.version>
     <commons-httpclient.version>3.1</commons-httpclient.version>
   </properties>
