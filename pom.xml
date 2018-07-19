@@ -30,7 +30,7 @@
   </parent>
   <groupId>org.exoplatform.addons.sso</groupId>
   <artifactId>cas-addon-parent</artifactId>
-  <version>2.1.x-SNAPSHOT</version>
+  <version>2.1.0-RC04</version>
   <packaging>pom</packaging>
   <name>eXo Add-on:: CAS SSO</name>
   <description>The CAS SSO add-on</description>
@@ -39,7 +39,7 @@
     <connection>scm:git:git://github.com/exoplatform/cas-addon.git</connection>
     <developerConnection>scm:git:git@github.com:exoplatform/cas-addon.git</developerConnection>
     <url>https://github.com/exoplatform/cas-addon</url>
-    <tag>HEAD</tag>
+    <tag>2.1.0-RC04</tag>
   </scm>
 
   <modules>
