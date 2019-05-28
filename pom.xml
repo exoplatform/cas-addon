@@ -52,8 +52,8 @@
     <!-- Dependencies versions -->
     <!-- **************************************** -->
     <org.exoplatform.depmgt.version>15.1</org.exoplatform.depmgt.version>
-    <org.exoplatform.gatein.portal.version>5.2.x-acc222-SNAPSHOT</org.exoplatform.gatein.portal.version>
-    <org.exoplatform.gatein.sso.version>5.2.x-acc222-SNAPSHOT</org.exoplatform.gatein.sso.version>
+    <org.exoplatform.gatein.portal.version>5.2.1-acc222-01</org.exoplatform.gatein.portal.version>
+    <org.exoplatform.gatein.sso.version>5.2.1-acc222-01</org.exoplatform.gatein.sso.version>
     <cas.client.version>3.2.1</cas.client.version>
     <commons-httpclient.version>3.1</commons-httpclient.version>
   </properties>
