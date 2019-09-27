@@ -51,7 +51,7 @@
     <!-- **************************************** -->
     <!-- Dependencies versions -->
     <!-- **************************************** -->
-    <org.exoplatform.depmgt.version>16-SNAPSHOT</org.exoplatform.depmgt.version>
+    <org.exoplatform.depmgt.version>16.x-SNAPSHOT</org.exoplatform.depmgt.version>
     <org.exoplatform.gatein.portal.version>5.3.x-SNAPSHOT</org.exoplatform.gatein.portal.version>
     <org.exoplatform.gatein.sso.version>5.3.x-SNAPSHOT</org.exoplatform.gatein.sso.version>
     <cas.client.version>3.2.1</cas.client.version>
