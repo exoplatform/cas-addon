@@ -26,7 +26,7 @@
   <parent>
     <groupId>org.exoplatform.addons.sso</groupId>
     <artifactId>cas-addon-parent</artifactId>
-    <version>3.0.x-SNAPSHOT</version>
+    <version>3.0.4-RC01</version>
   </parent>
   <artifactId>cas-addon-packaging</artifactId>
   <packaging>pom</packaging>
